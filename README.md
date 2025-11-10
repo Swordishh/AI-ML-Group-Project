@@ -1,2 +1,2 @@
 # AI-ML-Group-Project
-Tentative plan to use AI to compare climate change vs frequency of weather events in the last few decades and predicting if the trend is continuing upward or if climate activism activities are bringing the rate of severe weather events down
+Tentative plan implement AI systems z  to use weather data to predict severe weather events and if possible/have time tie it to climate change
