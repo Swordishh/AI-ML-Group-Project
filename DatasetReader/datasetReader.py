@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-df = pd.read_csv("1950-2024_all_tornadoes.csv")
+df = pd.read_csv("../NN/polyRegression/1950-2024_all_tornadoes.csv")
 pd.set_option('display.max_rows', None)
 fT = df[df["mag"]< 5]
 fd = fT[fT["mag"]>=0]
