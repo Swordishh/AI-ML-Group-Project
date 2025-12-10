@@ -78,7 +78,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
 # Features and target
-X = merged_df[['golbal_temp_anomaly', 'oni_mam']]
+X = merged_df[['global_temp_anomaly', 'oni_mam']]
 y = merged_df['tornado_count']
 
 # Split
@@ -102,3 +102,18 @@ print("Train R2:", r2_score(y_train, y_pred_train))
 print("Test MSE:", mean_squared_error(y_test, y_pred_test))
 print("Test R2:", r2_score(y_test, y_pred_test))
 
+print("Features:", poly.get_feature_names_out(['global_temp_anomaly', 'oni_mam']))
+print("Coefficients:", model.coef_)
+print("Intercept:", model.intercept_)
+
+new_data = pd.DataFrame({'global_temp_anomaly': [0.8], 'oni_mam': [0.5]})
+new_poly = poly.transform(new_data)
+prediction = model.predict(new_poly)
+print("Predicted tornado count:", prediction[0])
+
+import matplotlib.pyplot as plt
+plt.scatter(y_test, y_pred_test)
+plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')
+plt.xlabel('Actual')
+plt.ylabel('Predicted')
+plt.show()
