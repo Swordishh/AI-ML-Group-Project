@@ -106,7 +106,7 @@ print("Features:", poly.get_feature_names_out(['global_temp_anomaly', 'oni_mam']
 print("Coefficients:", model.coef_)
 print("Intercept:", model.intercept_)
 
-new_data = pd.DataFrame({'global_temp_anomaly': [0.8], 'oni_mam': [0.5]})
+new_data = pd.DataFrame({'global_temp_anomaly': [1.48], 'oni_mam': [-0.2]})
 new_poly = poly.transform(new_data)
 prediction = model.predict(new_poly)
 print("Predicted tornado count:", prediction[0])
@@ -116,4 +116,22 @@ plt.scatter(y_test, y_pred_test)
 plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')
 plt.xlabel('Actual')
 plt.ylabel('Predicted')
+plt.show()
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Your existing plot
+plt.scatter(y_test, y_pred_test)
+plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--', label='Perfect Prediction')
+
+# Add regression line through the scatter points
+z = np.polyfit(y_test, y_pred_test, 1)  # Fit 1st degree polynomial (line)
+p = np.poly1d(z)
+plt.plot(y_test, p(y_test), "b-", linewidth=2, label='Regression Line')
+
+plt.xlabel('Actual Tornado Count')
+plt.ylabel('Predicted Tornado Count')
+plt.legend()
+plt.title('Model Predictions vs Actual Values')
 plt.show()

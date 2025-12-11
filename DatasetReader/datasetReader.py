@@ -34,7 +34,7 @@ def plotStd(x, y):
 def plots(x, y):
     rList = [plotCount(x, y), plotAvg(x, y), plotStd(x, y)]
 
-plots("mo", "mag")
+plots("yr", "mag")
 # plots("st", "mag")
 # plots("closs", "mag")
 
